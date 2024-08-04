@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do App</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center my-4">To-Do List</h1>
+        <form action="/addtask" method="POST" class="form-inline justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+                <input type="text" class="form-control" name="newtask" placeholder="New task">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Add Task</button>
+        </form>
+        <ul class="list-group mt-4">
+            <% tasks.forEach(function(task) { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <%= task %>
+                    <form action="/removetask" method="POST" class="d-inline">
+                        <input type="hidden" name="removetask" value="<%= task %>">
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+</body>
+</html>
